@@ -3,9 +3,10 @@ import 'package:e_commerce/ItemPage/components/ItemTopBar.dart';
 import 'package:flutter/material.dart';
 
 class ItemTop extends StatelessWidget {
-  final String itemImage;
+ 
+
   final String title;
-  const ItemTop({super.key, required this.itemImage, required this.title});
+  const ItemTop({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +14,9 @@ class ItemTop extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 320,
+          height: 160,
           width: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(itemImage),
-              fit: BoxFit.cover,
-            ),
-          ),
+          
         ),
         Container(
           height: 320,
@@ -40,12 +36,7 @@ class ItemTop extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                children: const [
-                  /// this is for top app bar.
-                  ItemTopBar(),
-                ],
-              ),
+              
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

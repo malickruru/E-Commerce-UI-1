@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 import 'package:animate_do/animate_do.dart';
+import 'package:e_commerce/ItemPage/ItemPage.dart';
 import 'package:e_commerce/SplashPage/HomePage.dart';
+import 'package:e_commerce/services/Offer/get_books.dart';
 import 'package:flutter/material.dart';
 
 class ShopWall extends StatelessWidget {
@@ -19,7 +21,7 @@ class ShopWall extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  "assets/images/background.jpg",
+                  "assets/images/pexels-oladimeji-ajegbile-2861798.jpg",
                 ),
                 fit: BoxFit.cover,
               ),
@@ -44,52 +46,52 @@ class ShopWall extends StatelessWidget {
             ),
             child: Column(
               children: [
-                FadeInDown(
-                  delay: const Duration(milliseconds: 800),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, right: 20, top: 15),
+                // FadeInDown(
+                //   delay: const Duration(milliseconds: 800),
+                //   child: Padding(
+                //     padding:
+                //         const EdgeInsets.only(left: 20, right: 20, top: 15),
 
-                    /// this row is for showing top bar.
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: ((context) => const HomePage()),
-                                ),
-                                (route) => false);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.favorite,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Icon(
-                              Icons.shopping_cart,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                //     /// this row is for showing top bar.
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //       children: [
+                //         IconButton(
+                //           onPressed: () {
+                //             Navigator.pushAndRemoveUntil(
+                //                 context,
+                //                 MaterialPageRoute(
+                //                   builder: ((context) => const HomePage()),
+                //                 ),
+                //                 (route) => false);
+                //           },
+                //           icon: const Icon(
+                //             Icons.arrow_back_ios,
+                //             color: Colors.white,
+                //             size: 30,
+                //           ),
+                //         ),
+                //         Row(
+                //           children: const [
+                //             Icon(
+                //               Icons.favorite,
+                //               color: Colors.white,
+                //               size: 30,
+                //             ),
+                //             SizedBox(
+                //               width: 20,
+                //             ),
+                //             Icon(
+                //               Icons.shopping_cart,
+                //               color: Colors.white,
+                //               size: 30,
+                //             ),
+                //           ],
+                //         )
+                //       ],
+                //     ),
+                //   ),
+                // ),
 
                 /// this spacer is for push down everything.
                 const Spacer(),
@@ -105,7 +107,7 @@ class ShopWall extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: const [
                             Text(
-                              "Our New products",
+                              "BOOK CONNECT",
                               style: TextStyle(
                                   fontSize: 33,
                                   fontWeight: FontWeight.w700,
@@ -122,14 +124,19 @@ class ShopWall extends StatelessWidget {
                         delay: const Duration(milliseconds: 1200),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "VIEW MORE",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white,
-                                letterSpacing: 1,
+                          children:  [
+                            GestureDetector(
+                              onTap: () {
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   ItemPage(fetch: getBook('1','100'),title: 'Livres à vendre',)));
+                              }, 
+                              child: Text(
+                                "ACHETER UN MANUEL",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white,
+                                  letterSpacing: 1,
+                                ),
                               ),
                             ),
                             SizedBox(

@@ -1,11 +1,14 @@
 // ignore_for_file: file_names
 import 'package:animate_do/animate_do.dart';
+import 'package:e_commerce/ItemPage/ItemPage.dart';
+import 'package:e_commerce/services/Offer/get_books.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTitle extends StatelessWidget {
   final String title;
   final String buttonText;
-  const CategoryTitle({super.key, required this.title, required this.buttonText});
+  var  link;
+  CategoryTitle({super.key, required this.title, required this.buttonText , required this.link});
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +17,24 @@ class CategoryTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          FadeInLeft(
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w800,
-                fontSize: 22,
-                shadows: [
-                  Shadow(
-                    blurRadius: 2,
-                    color: Colors.black,
-                    offset: Offset(0, 0),
-                  )
-                ],
-              ),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+              fontSize: 22,
+              shadows: [
+                Shadow(
+                  blurRadius: 2,
+                  color: Colors.black,
+                  offset: Offset(0, 0),
+                )
+              ],
             ),
           ),
-          FadeInRight(
+          GestureDetector(
+            onTap: () => link()
+,
             child: Text(
               buttonText,
               style: TextStyle(

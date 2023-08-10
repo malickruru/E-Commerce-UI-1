@@ -1,43 +1,37 @@
 // ignore_for_file: file_names
 import 'package:animate_do/animate_do.dart';
-import 'package:e_commerce/DetailPage/detail_page.dart';
-import 'package:e_commerce/Utils/image.dart';
-import 'package:e_commerce/services/Offer/get_books.dart';
+
+import 'package:e_commerce/Utils/matiere.dart';
+
 import 'package:flutter/material.dart';
 
-class Categoris extends StatefulWidget {
+class Matiere extends StatefulWidget {
   final double width;
   final double height;
 
-  const Categoris(
+  const Matiere(
       {super.key,
       required this.width,
       required this.height,
       });
 
   @override
-  State<Categoris> createState() => _CategorisState();
+  State<Matiere> createState() => _MatiereState();
 }
 
-class _CategorisState extends State<Categoris> {
+class _MatiereState extends State<Matiere> {
   @override
-  var books ;
+  var books = listeMatieres  ;
   var loaded = false;
 void initState() {
     super.initState();
-    _getData();
+   
   }
 
-  _getData() async {
-    books = await getBook('1', '3');
-
-    setState(() {
-      loaded = true;
-    });
-  }
+  
   @override
   Widget build(BuildContext context) {
-    return !loaded ? Text('chargement ...') : Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -46,8 +40,9 @@ void initState() {
             3,
             (index) => GestureDetector(
               onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Details( book: books[index])));
-            },
+                /// this is for navigating item page.
+                
+              },
               child: Stack(
                 children: [
                   Container(
@@ -55,10 +50,7 @@ void initState() {
                     width: widget.width,
                     height: widget.height,
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(getAllImage(books[index]['photos'])[0] ),
-                        fit: BoxFit.cover,
-                      ),
+                      color: books[index].couleur,
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
@@ -87,7 +79,7 @@ void initState() {
                           padding:
                               const EdgeInsets.only(bottom: 12, left: 10),
                           child: Text(
-                            books[index]['titre'],
+                            books[index].titre,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,

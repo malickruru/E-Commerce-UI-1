@@ -2,37 +2,34 @@
 import 'package:e_commerce/ItemPage/components/ItemTop.dart';
 import 'package:e_commerce/ItemPage/components/NewProducts.dart';
 import 'package:e_commerce/ShopPage/components/CategoryTitle.dart';
+import 'package:e_commerce/Widget/app_bar.dart';
+import 'package:e_commerce/Widget/drawer.dart';
+import 'package:e_commerce/services/Offer/get_books.dart';
 import 'package:flutter/material.dart';
 
 class ItemPage extends StatelessWidget {
-  final String imageUrl;
+  
   final String title;
-  final List<String> productList;
-  final List<String> productTitle;
-  final String handler;
-  const ItemPage({
+
+   Future fetch ;
+   ItemPage({
     super.key,
-    required this.imageUrl,
+    required this.fetch,
     required this.title,
-    required this.productList,
-    required this.productTitle,
-    required this.handler,
+    
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: drawer(context),
+      appBar: searchAppBar(context: context,color: Colors.black),
       body: ListView(
         children: [
-          ItemTop(
-            itemImage: imageUrl,
-            title: title,
-          ),
-          const CategoryTitle(title: "New Products", buttonText: "View More >"),
+          CategoryTitle(title: title, buttonText: "", link: Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   ItemPage(fetch: getBook('1','100'),title: 'Livres à vendre',)))
+),
           NewProducts(
-            newItems: productList,
-            newItemsTitle: productTitle,
-            handler: handler,
+            fetch: fetch,
           )
         ],
       ),
