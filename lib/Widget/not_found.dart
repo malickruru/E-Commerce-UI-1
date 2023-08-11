@@ -1,5 +1,6 @@
 
 import 'package:e_commerce/Utils/colors.dart';
+import 'package:e_commerce/WishListPage/wish_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -45,6 +46,7 @@ class ArticleNotFound extends StatelessWidget {
               childTextColor: Colors.white,
               onPressed: () {
                 var user = GetStorage().read('foire_aux_livre_user');
+          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => WishList(idUser: user['id'],)));
               },
             ),
           ),

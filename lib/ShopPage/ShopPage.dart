@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:e_commerce/CategoryPage/category_page.dart';
 import 'package:e_commerce/Data/Content.dart';
 import 'package:e_commerce/ItemPage/ItemPage.dart';
 import 'package:e_commerce/ShopPage/components/Categories.dart';
@@ -35,11 +36,11 @@ class _ShopPageState extends State<ShopPage> {
               CategoryTitle(
                 title: "Dernière offres",
                 buttonText: "voir plus",
-                link: Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   ItemPage(fetch: getBook('1','100'),title: 'Livres à vendre',)))
+                link: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   ItemPage(fetch: getBook('1','100'),title: 'Livres à vendre',)));} 
               ),
 
               /// this is for showing category widget.
-              Categoris(
+              const Categoris(
                 height: 170,
                 width: 140,
                 
@@ -52,9 +53,9 @@ class _ShopPageState extends State<ShopPage> {
               CategoryTitle(
                 title: "Matières",
                 buttonText: "voir plus",
-                link: Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   ItemPage(fetch: getBook('1','100'),title: 'Livres à vendre',)))
+                link: (){Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   CategoryPage()));} 
               ),
-              Matiere(
+              const Matiere(
                 height: 80,
                 width: 170,
               ),

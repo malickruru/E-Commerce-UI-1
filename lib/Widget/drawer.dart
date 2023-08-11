@@ -1,6 +1,8 @@
 import 'package:e_commerce/ItemPage/ItemPage.dart';
 import 'package:e_commerce/LoginPage/login_page.dart';
 import 'package:e_commerce/ShopPage/ShopPage.dart';
+import 'package:e_commerce/UserBookPage/user_book_page.dart';
+import 'package:e_commerce/WishListPage/wish_list_page.dart';
 import 'package:e_commerce/services/Offer/get_books.dart';
 import 'package:flutter/material.dart';
 // import 'package:foire_au_livre/login.dart';
@@ -10,6 +12,8 @@ import 'package:flutter/material.dart';
 // import 'package:foire_au_livre/pages/user_book_page.dart';
 // import 'package:foire_au_livre/services/Offer/get_books.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:e_commerce/services/Offer/user_book.dart';
+
 
 
 Widget drawer(context){
@@ -40,7 +44,7 @@ Widget drawer(context){
         title: const Text('Vendre mes livres'),
         onTap: () {
           var user = GetStorage().read('foire_aux_livre_user');
-          // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => UserBook(idUser: user['id'],)));
+          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => ItemPage(fetch: userBook(user['id']),title: 'Mes livres',userOption: true,) ));
         },
       ),
       ListTile(
@@ -56,7 +60,7 @@ Widget drawer(context){
         title: const Text('Liste de souhait'),
         onTap: () {
           var user = GetStorage().read('foire_aux_livre_user');
-          // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => WishList(idUser: user['id'],)));
+          Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => WishList(idUser: user['id'],)));
         },
       ),
       Positioned( bottom : 10, child : ListTile(

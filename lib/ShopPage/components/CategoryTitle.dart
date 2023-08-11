@@ -1,7 +1,5 @@
 // ignore_for_file: file_names
-import 'package:animate_do/animate_do.dart';
-import 'package:e_commerce/ItemPage/ItemPage.dart';
-import 'package:e_commerce/services/Offer/get_books.dart';
+
 import 'package:flutter/material.dart';
 
 class CategoryTitle extends StatelessWidget {
@@ -33,8 +31,7 @@ class CategoryTitle extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => link()
-,
+            onTap: link,
             child: Text(
               buttonText,
               style: TextStyle(

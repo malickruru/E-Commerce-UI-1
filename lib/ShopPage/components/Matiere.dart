@@ -1,7 +1,9 @@
 // ignore_for_file: file_names
 import 'package:animate_do/animate_do.dart';
+import 'package:e_commerce/ItemPage/ItemPage.dart';
 
 import 'package:e_commerce/Utils/matiere.dart';
+import 'package:e_commerce/services/Offer/get_books.dart';
 
 import 'package:flutter/material.dart';
 
@@ -40,9 +42,8 @@ void initState() {
             3,
             (index) => GestureDetector(
               onTap: () {
-                /// this is for navigating item page.
-                
-              },
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>   ItemPage(fetch: categoryBook(books[index].titre),title: books[index].titre,)));
+                },
               child: Stack(
                 children: [
                   Container(
